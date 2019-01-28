@@ -1,18 +1,16 @@
 import java.io.*;
 
-class Fractals {
+public class Fractals {
 	public static void main(String[] args) throws FileNotFoundException {
-		// Image width and height in pixels
-		int HEIGHT = 10;
-		int WIDTH  = 10;
+		Image smoothObj = new Image(200, 100);
+		// Set the pixels
+		for (int i = 0; i < smoothObj.getHeight(); i++) {
+			for (int j = 0; j < smoothObj.getWidth(); j++) {
+				smoothObj.setPixel(j,i, new Colour(j/(float)smoothObj.getWidth(), 0, i/(float)smoothObj.getHeight()));
+			}
+		}
 
-		// Pixel arrays
-		float[] red   = new float[HEIGHT*WIDTH];
-		float[] green = new float[HEIGHT*WIDTH];
-		float[] blue  = new float[HEIGHT*WIDTH];
-
-		// Print to file
-		PrintStream ps = new PrintStream("test.ppm");
-		ps.close();
+		// Write out the file
+		smoothObj.write("smooth.ppm");
 	}
 }
