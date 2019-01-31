@@ -7,5 +7,5 @@ for file in $PROJECT_PATH/src/*; do
 	sources="$sources $file"
 done
 	
-echo "Compiling with command: javac $sources -d $PROJECT_PATH/bin/"
+echo -e "...\nCompiling with command: javac $sources -d $PROJECT_PATH/bin/\n...\n..."
 javac $sources -d $PROJECT_PATH/bin/

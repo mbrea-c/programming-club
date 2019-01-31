@@ -2,14 +2,11 @@ import java.io.*;
 
 public class Fractals {
 	public static void main(String[] args) throws FileNotFoundException {
-		Image smoothObj = new Image(200, 100);
-		// Set the pixels
-		for (int i = 0; i < smoothObj.getHeight(); i++) {
-			for (int j = 0; j < smoothObj.getWidth(); j++) {
-				smoothObj.setPixel(j,i, new Colour(j/(float)smoothObj.getWidth(), 0, i/(float)smoothObj.getHeight()));
-			}
-		}
-
+		Complex z = new Complex(0, 0).pow(2);
+		System.out.printf("%f %f %f %f\n", z.getR(), z.getI(), z.getM(), z.getA());
+		Image smoothObj = new Image(300, 300, new Mandelbrot(32, 2, 2),
+		                            new Rectangle(-2,1,-1.5,1.5)
+		);
 		// Write out the file
 		smoothObj.write("smooth.ppm");
 	}
